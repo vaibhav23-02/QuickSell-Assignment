@@ -1,7 +1,14 @@
-import { Backlog, Done, InProgress } from "./Svgs";
+import { Backlog, Done, InProgress, Todo, Cancelled } from "./Svgs";
 
-export const statusOf = [InProgress, Done, Backlog];
+export const statusIcons = {
+  todo: Todo,
+  inprogress: InProgress,
+  backlog: Backlog,
+  done: Done,
+  cancelled: Cancelled,
+};
 
-export const getStatus = () => {
-  return statusOf[Math.floor(Math.random() * statusOf.length)];
+export const getStatus = (status) => {
+  const normalizedStatus = status === "In progress" ? "inprogress" : status.toLowerCase();
+  return statusIcons[normalizedStatus] || null;
 };

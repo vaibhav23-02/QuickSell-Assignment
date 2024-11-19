@@ -1,7 +1,8 @@
 import "./Card.css";
-import ThreeDotMenu from "../assets/icons_FEtask/Img - High Priority.svg";
 import { getStatus } from "../utils/status";
-import { Dot, InProgress, LowPriority } from "../utils/Svgs";
+import { Dot } from "../utils/Svgs";
+import { getPriorityIcon } from "../utils/getpriority";
+
 const Card = ({ data, userName, status }) => {
   console.log("data", data);
 
@@ -15,19 +16,19 @@ const Card = ({ data, userName, status }) => {
             <h3 className="card-cam">{data?.id}</h3>
           </div>
           <div className="card-top">
-            <p className="card-description">
-              {status && (
-                <img src={getStatus()} alt="Menu icon" className="menu-icon" />
-              )}{" "}
-              {/* {" Status"} */}
-              {data?.title}
-            </p>
+          <p className="card-description">
+            {data?.status && (
+              <img src={getStatus(data.status)} alt="Menu icon" className="menu-icon" />
+            )}
+            {" Status"}
+            {data?.title}
+          </p>
           </div>
           <div style={{ display: "flex", gap: "0.5rem", fontSize: "0.01rem" }}>
             <div className="card-network-icon">
               <img
-                src={LowPriority}
-                alt="Menu icon"
+                src={getPriorityIcon(data?.priority)}
+                alt="Priority icon"
                 style={{ width: "0.7rem" }}
               />
             </div>
