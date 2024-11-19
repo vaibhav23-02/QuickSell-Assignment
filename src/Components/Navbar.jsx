@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const navbarStyle = {
-  background: "#386C94",
+  background: "whitesmoke",
   padding: "0.5rem",
   paddingLeft: "7rem",
   display: "flex",
